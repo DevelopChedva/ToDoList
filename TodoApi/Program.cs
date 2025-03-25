@@ -23,11 +23,11 @@ builder.Services.AddSwaggerGen(c =>
 });
 var app = builder.Build();
 app.UseCors("AllowAll");
-if (app.Environment.IsDevelopment())
-{
+// if (app.Environment.IsDevelopment())
+// {
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+// }
 
 app.MapGet("/", () => "Hello World!");
 // שליפה
@@ -73,5 +73,5 @@ app.MapPatch("/updateTask/{id}", async (int id, ToDoDbContext db) =>
      await db.SaveChangesAsync();
     return Results.Ok("Item deleted"); 
   });
-
+app.MapGet(" / ", ()=>"chedva Hello");
 app.Run();

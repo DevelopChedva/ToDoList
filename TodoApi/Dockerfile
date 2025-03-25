@@ -8,10 +8,10 @@ ENV ASPNETCORE_URLS=http://+:80
 FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 ARG configuration=Release
 WORKDIR /src
-COPY ["TodoApi.csproj", "TodoApi/"]
-RUN dotnet restore "TodoApi/TodoApi.csproj"
+COPY ["/TodoApi.csproj", "/"]
+RUN dotnet restore "TodoApi.csproj"
 COPY . .
-WORKDIR "/src/TodoApi"
+WORKDIR "/src/."
 RUN dotnet build "TodoApi.csproj" -c $configuration -o /app/build
 
 FROM build AS publish
